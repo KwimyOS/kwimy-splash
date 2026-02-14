@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=Kwimy Splash
+Description=Kwimy splash screen
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/kwimy-splash
+ScriptFile=/usr/share/plymouth/themes/kwimy-splash/kwimy-splash.script

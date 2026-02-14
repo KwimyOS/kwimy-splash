@@ -1,0 +1,70 @@
+# Base: #1A1B24
+Window.SetBackgroundTopColor(0.102, 0.106, 0.141);
+Window.SetBackgroundBottomColor(0.102, 0.106, 0.141);
+
+screen_width = Window.GetWidth();
+screen_height = Window.GetHeight();
+
+logo.image = Image("logo-splash.png");
+logo.sprite = Sprite(logo.image);
+
+spinner.frames = [];
+spinner.frames[0] = Image("throbber-0001.png");
+spinner.frames[1] = Image("throbber-0002.png");
+spinner.frames[2] = Image("throbber-0003.png");
+spinner.frames[3] = Image("throbber-0004.png");
+spinner.frames[4] = Image("throbber-0005.png");
+spinner.frames[5] = Image("throbber-0006.png");
+spinner.frames[6] = Image("throbber-0007.png");
+spinner.frames[7] = Image("throbber-0008.png");
+spinner.frames[8] = Image("throbber-0009.png");
+spinner.frames[9] = Image("throbber-0010.png");
+spinner.frames[10] = Image("throbber-0011.png");
+spinner.frames[11] = Image("throbber-0012.png");
+spinner.frames[12] = Image("throbber-0013.png");
+spinner.frames[13] = Image("throbber-0014.png");
+spinner.frames[14] = Image("throbber-0015.png");
+spinner.frames[15] = Image("throbber-0016.png");
+spinner.frames[16] = Image("throbber-0017.png");
+spinner.frames[17] = Image("throbber-0018.png");
+spinner.frames[18] = Image("throbber-0019.png");
+spinner.frames[19] = Image("throbber-0020.png");
+spinner.frames[20] = Image("throbber-0021.png");
+spinner.frames[21] = Image("throbber-0022.png");
+spinner.frames[22] = Image("throbber-0023.png");
+spinner.frames[23] = Image("throbber-0024.png");
+spinner.frames[24] = Image("throbber-0025.png");
+spinner.frames[25] = Image("throbber-0026.png");
+spinner.frames[26] = Image("throbber-0027.png");
+spinner.frames[27] = Image("throbber-0028.png");
+spinner.frames[28] = Image("throbber-0029.png");
+spinner.frames[29] = Image("throbber-0030.png");
+spinner.sprite = Sprite(spinner.frames[0]);
+
+global.animation_frame = 0;
+global.spinner_frame = 0;
+
+group_height = logo.image.GetHeight() + 36 + spinner.frames[0].GetHeight();
+group_top = (screen_height - group_height) / 2;
+
+logo_x = (screen_width - logo.image.GetWidth()) / 2;
+logo_y = group_top;
+logo.sprite.SetPosition(logo_x, logo_y, 0);
+
+spinner_x = (screen_width - spinner.frames[0].GetWidth()) / 2;
+spinner_y = logo_y + logo.image.GetHeight() + 36;
+spinner.sprite.SetPosition(spinner_x, spinner_y, 1);
+
+fun refresh_callback ()
+{
+  global.animation_frame++;
+  if ((global.animation_frame % 3) == 0)
+    {
+      global.spinner_frame = global.spinner_frame + 1;
+      if (global.spinner_frame > 29)
+        global.spinner_frame = 0;
+      spinner.sprite.SetImage(spinner.frames[global.spinner_frame]);
+    }
+}
+
+Plymouth.SetRefreshFunction (refresh_callback);
